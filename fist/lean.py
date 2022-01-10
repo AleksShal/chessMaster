@@ -17,14 +17,23 @@ def number_move(move: str):
 
 def move_variants(num_move: int, move):
     variants = []
-    next_move = str(num_move + 1)
-    if len(next_move) == 1:
-        next_move += 'e'
+    if move[3] == 'b':
+        next_move = str(num_move + 1)
+        if len(next_move) == 1:
+            next_move += 'e'
+        next_move += '_w'
+    elif move[3] == 'w':
+        next_move = str(num_move)
+        if len(next_move) == 1:
+            next_move += 'e'
+        next_move += '_b'
+
     for move in move_vars:
-        if next_move == move[:2]:
+        if next_move == move[:4]:
             variants.append(move)
     if not variants:
-        print('Вариант закончен')
+        mes = 'Вариант закончен'
+        return print(mes)
     return take_variant(variants, next_move, move)
 
 
@@ -33,18 +42,17 @@ def take_variant(variants: list, next_move, move):
     for index, variant in enumerate(variants):
         print(f'{index + 1} - {variants[index][-3:]}')
     var = int(input("Твой выбор: ")) - 1
-    return your_move(var, next_move, move)
+    return your_move(var, variants, next_move, move)
 
 
-def your_move(move_var: int, next_move, move):
-    if move[3] or move[4] == 'w':
-        yr_move = next_move + '_' + 'b' + '_' + f'{[move for move in variants][var][-3:]}'
-    elif move[3] or move[4] == 'b':
-        yr_move = next_move + '_' + 'b' + '_' + f'{[move for move in variants][var][-3:]}'
-    print(yr_move)
+def your_move(var: int, variants, next_move, move):
+    if move[3] == 'w':
+        yr_move = next_move + '_' + f'{[move for move in variants][var][-3:]}'
+    elif move[3] == 'b':
+        yr_move = next_move + '_' + f'{[move for move in variants][var][-3:]}'
     return move_go(yr_move)
 
 
 if __name__ == '__main__':
-    print(move_go('1_w_g4'))
+    print(move_go('1e_w_g4'))
     # print(move_variants(1))

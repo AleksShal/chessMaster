@@ -2,5 +2,7 @@
 1e_b_d5_
 1e_b_e5_
 2e_w_Bg2
+2e_b_e5_
 2e_b_c6_
 2e_b_Bg4
+3e_w_c4_

@@ -54,5 +54,5 @@ def your_move(var: int, variants, next_move, move):
 
 
 if __name__ == '__main__':
-    print(move_go('1e_w_g4'))
+    print(move_go('1e_w_g4_'))
     # print(move_variants(1))

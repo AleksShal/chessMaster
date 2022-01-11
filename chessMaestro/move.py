@@ -26,11 +26,14 @@ def take_move(variants: list, branch_2: dict):
     """
     print('Выбери вариант:')
     for index, variant in enumerate(variants):
-        print(f'{index + 1} - {variants[index][-3:]}')
+        if variant[-3] == '_':
+            print(f'{index + 1} - {variants[index][-2:]}')
+        else:
+            print(f'{index + 1} - {variants[index][-3:]}')
     yr_move = variants[int(input("Твой выбор: ")) - 1]
     print(yr_move)
     return get_move(yr_move, branch=branch_2)
 
 
 if __name__ == '__main__':
-    print(get_move('1e_w_g4_'))
+    print(get_move('1_w_g4'))
